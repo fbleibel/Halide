@@ -147,6 +147,12 @@ int main(int argc, char **argv) {
         b.translate({-123, -456, -2});
         check_equal(a, b);
     }
+    
+    {
+        // Check that for_each_value on an empty buffer does not crash.
+        Buffer<float> b;
+        b.for_each_value([](float &a){});
+    }
 
     {
         // Check lifting a function over scalars to a function over entire buffers.
